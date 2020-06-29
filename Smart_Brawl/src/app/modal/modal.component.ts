@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import swal from '../../../node_modules/sweetalert';
+//registrar uuario
+import { AuthService } from "../services/auth.service";
 
 @Component({
   selector: 'app-modal',
@@ -10,9 +12,8 @@ import swal from '../../../node_modules/sweetalert';
 export class ModalComponent implements OnInit {
   form: any;
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private formBuilder: FormBuilder, private authService:AuthService) {
     this.form = formBuilder.group({
-      username: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required],
       passwordR: ['', Validators.required],
@@ -30,6 +31,7 @@ export class ModalComponent implements OnInit {
       console.log(this.form.value);
       // Los valores están dentro de this.form.value
       // Por ejemplo: this.form.value.password
+      this.authService.registerWithEmail(this.form.value.email,this.form.value.password);
       swal('Account registered!', 'Welcome to Smart Brawl!', 'success');
     }
     else {

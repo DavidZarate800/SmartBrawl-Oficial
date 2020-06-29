@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import swal from '../../../node_modules/sweetalert';
+//verificar usuario
+import { AuthService } from "../services/auth.service";
 
 @Component({
   selector: 'app-modal-log-in',
@@ -10,7 +12,7 @@ import swal from '../../../node_modules/sweetalert';
 export class ModalLogInComponent implements OnInit {
   form: any;
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private formBuilder: FormBuilder, private authService:AuthService) {
     this.form = formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required]
@@ -21,16 +23,29 @@ export class ModalLogInComponent implements OnInit {
   }
 
   submit() {
+   
+    if (this.form.valid) {
+      this.authService.loginWithEmail(this.form.value.email,this.form.value.password);
+      if(this.authService.currentUser){
+        swal('Successful log in!', 'Welcome to Smart Brawl!', 'success');
+      }
+      else{
+        //sunmarle 1 a los intentos 
+        swal('Error!', 'Verify your data...', 'error');
+      }
+    }
+    /*
     if (!this.form.valid) {
       swal('Error!', 'Verify your data...', 'error');
     }
     else if (true && true) { // En este if va la verificación con la base de datos && el máximo de intentos sea menor o igual a 3
+     
       console.log(this.form.value.email);
       console.log(this.form.value.password);
       swal('Successful log in!', 'Welcome to Smart Brawl!', 'success');
     }
     else { // Si es que no coincide con la base de datos
       swal('Error!', 'Verify your data...', 'error');
-    }
+    }*/
   }
 }

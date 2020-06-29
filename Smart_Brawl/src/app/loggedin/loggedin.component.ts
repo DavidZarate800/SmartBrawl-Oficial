@@ -5,6 +5,7 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './loggedin.component.html',
   styleUrls: ['./loggedin.component.css']
 })
+
 export class LoggedinComponent implements OnInit {
 
   constructor() { }

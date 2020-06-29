@@ -6,12 +6,14 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
 
+import { AuthService } from "../services/auth.service";
+
 @Component({
   selector: 'app-main-nav',
   templateUrl: './main-nav.component.html',
   styleUrls: ['./main-nav.component.css']
 })
-export class MainNavComponent {
+export class MainNavComponent {  
 
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
@@ -19,7 +21,7 @@ export class MainNavComponent {
       shareReplay()
     );
 
-  constructor(private breakpointObserver: BreakpointObserver, private dialog: MatDialog) {}
+  constructor(private breakpointObserver: BreakpointObserver, private dialog: MatDialog, private authService:AuthService) {}
 
   openDialog(){
     this.dialog.open(ModalComponent);
@@ -27,5 +29,9 @@ export class MainNavComponent {
   
   openDialogLogIn(){
     this.dialog.open(ModalLogInComponent);
+  }
+
+  salir(){
+    this.authService.singout();
   }
 }

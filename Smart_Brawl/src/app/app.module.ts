@@ -17,7 +17,15 @@ import { ModalComponent } from './modal/modal.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ModalLogInComponent } from './modal-log-in/modal-log-in.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ServiceWorkerModule } from '@angular/service-worker';
+//firebase modules
+import { AngularFireModule } from "@angular/fire";
+import { AngularFireDatabaseModule } from "@angular/fire/database";
+import { AngularFirestoreModule } from "@angular/fire/firestore";
+import { environment } from "../environments/environment";
 import { LoggedinComponent } from './loggedin/loggedin.component';
+
+
 
 @NgModule({
   declarations: [
@@ -45,7 +53,12 @@ import { LoggedinComponent } from './loggedin/loggedin.component';
     LayoutModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireDatabaseModule,
+    AngularFirestoreModule
+
   ],
   providers: [MessageService],
   bootstrap: [AppComponent]
