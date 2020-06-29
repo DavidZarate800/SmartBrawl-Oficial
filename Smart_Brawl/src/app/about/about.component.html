@@ -1,4 +1,24 @@
-<mat-toolbar><span class="material-icons">info</span>&nbsp; About Us</mat-toolbar><br />
+<div class="my-3"> <!--CENTRARLO-->
+  <!--Iniciar la lectura-->
+  <button (click)="start(leer.textContent)" type="button" mat-icon-button>
+    <mat-icon>hearing</mat-icon>
+  </button>
+  <!--Pausar la lectura-->
+  <button (click)="pause()" type="button" mat-icon-button>
+    <mat-icon>pause_circle_filled</mat-icon>
+  </button>
+  <!--Reanudar la lectura-->
+  <button (click)="resume()" type="button" mat-icon-button>
+    <mat-icon>play_circle_filled</mat-icon>
+  </button>
+  <!--Cancelar la lectura-->
+  <button (click)="cancel()" type="button" mat-icon-button>
+    <mat-icon>hearing_disabled</mat-icon>
+  </button>
+</div>
+
+<div #leer>
+<mat-toolbar><mat-icon class="material-icons">info</mat-icon>&nbsp;About Us</mat-toolbar><br />
 <div class="container">
   <div class="row">
     <div class="col-md-4">
@@ -7,7 +27,7 @@
       <h2>On the cutting edge, all technological information in one place.</h2>
     </div>
     <div class="col-md-4">
-      <h1>Mission</h1>
+      <h1>Misión.</h1>
       <hr />
       <ul>
         <li>
@@ -25,7 +45,7 @@
       </ul>
     </div>
     <div class="col-md-4">
-      <h1>Vision</h1>
+      <h1>Visión.</h1>
       <hr />
       <p>
         Lo que nosotros queremos lograr con nuestra página es, tener un lugar al
@@ -186,3 +206,5 @@
     </div>
   </div>
 </div>
+
+</div><!--Div Leer-->

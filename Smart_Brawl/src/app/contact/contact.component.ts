@@ -2,6 +2,7 @@ import { MessageService } from './../services/message.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import swal from '../../../node_modules/sweetalert';
+import { SpeechService } from '../services/speech.service'
 
 @Component({
   selector: 'app-contact',
@@ -11,7 +12,7 @@ import swal from '../../../node_modules/sweetalert';
 export class ContactComponent implements OnInit {
   form: any;
 
-  constructor(private formBuilder: FormBuilder, public messageService: MessageService) {
+  constructor(private formBuilder: FormBuilder, public messageService: MessageService, private lectura: SpeechService) {
     // Form validation
     this.form = formBuilder.group({
       username: ['', Validators.required],
@@ -26,6 +27,22 @@ export class ContactComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  //Metodos de Speech
+  start(html){
+    this.lectura.start(html); 
+  }
+  pause(){
+    this.lectura.pause();
+  }
+  resume(){
+    this.lectura.resume();
+  }
+
+  cancel(){
+    this.lectura.cancel();
+  }
+  //Fin metodos Speech
+  
   formatLabel(value: number) {
     if (value >= 1000) {
       return Math.round(value / 10000);

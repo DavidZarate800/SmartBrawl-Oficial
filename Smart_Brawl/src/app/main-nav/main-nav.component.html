@@ -22,6 +22,12 @@
       <a mat-list-item [routerLink]="['/contact']"
         ><span class="material-icons">alternate_email</span>&nbsp; Contact Us</a
       >
+      <!--ngIf para solo los usuarios logueados-->
+      <ng-container>
+      <a mat-list-item [routerLink]="['/loggedin']"
+      ><span class="material-icons">smartphone</span>&nbsp; Comparativa</a
+      >
+    </ng-container>
       <a mat-list-item [routerLink]="['/faqs']"
         ><span class="material-icons">help</span>&nbsp; FAQs</a
       >
@@ -33,6 +39,7 @@
       >
     </mat-nav-list>
   </mat-sidenav>
+
   <mat-sidenav-content>
     <mat-toolbar color="primary">
       <button
@@ -56,9 +63,21 @@
       <button type="button" mat-icon-button>
         <mat-icon>help</mat-icon>
       </button>
+      
+      <!--Iniciar la lectura
       <button type="button" mat-icon-button>
         <mat-icon>accessibility_new</mat-icon>
       </button>
+      Pausar la lectura
+      <button type="button" mat-icon-button>
+        <mat-icon>speaker_notes_off</mat-icon>
+      </button>
+      Reanudar la lectura
+      <button type="button" mat-icon-button>
+        <mat-icon>speaker_notes</mat-icon>
+      </button>
+      -->
+
       <!-- Dentro del siguiente ng-container irá un ngif para que aparezca el icono si es que SI esta logeado -->
       <ng-container>
         <button type="button" mat-icon-button (click)="openDialogLogIn()">
@@ -67,7 +86,7 @@
       </ng-container>
     </mat-toolbar>
     <!-- Add Content Here -->
-    <div class="container mt-3">
+    <div class="container">
       <router-outlet></router-outlet>
     </div>
     <app-footer></app-footer>

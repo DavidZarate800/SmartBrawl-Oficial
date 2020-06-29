@@ -17,6 +17,7 @@ import { ModalComponent } from './modal/modal.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ModalLogInComponent } from './modal-log-in/modal-log-in.component';
 import { HttpClientModule } from '@angular/common/http';
+import { LoggedinComponent } from './loggedin/loggedin.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { HttpClientModule } from '@angular/common/http';
     FooterComponent,
     MainNavComponent,
     ModalComponent,
-    ModalLogInComponent
+    ModalLogInComponent,
+    LoggedinComponent
   ],
   entryComponents: [
     ModalComponent,
