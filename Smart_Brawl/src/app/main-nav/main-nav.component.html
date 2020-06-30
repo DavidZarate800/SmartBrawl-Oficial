@@ -23,9 +23,15 @@
         ><span class="material-icons">alternate_email</span>&nbsp; Contact Us</a
       >
       <!--ngIf para solo los usuarios logueados-->
-      <ng-container>
+      <ng-container *ngIf="logueado()">
         <a mat-list-item [routerLink]="['/loggedin']"
         ><span class="material-icons">smartphone</span>&nbsp; Comparativa</a
+      >
+      </ng-container>
+      <!--ngIf para solo los administradores-->
+      <ng-container *ngIf="recuperarAdmin()">
+        <a mat-list-item [routerLink]="['/admin']"
+        ><span class="material-icons">admin_panel_settings</span>&nbsp; Admin Tool</a
       >
       </ng-container>
       <a mat-list-item [routerLink]="['/faqs']"
@@ -56,17 +62,16 @@
         placeholder="Search Equipment"
         aria-label="Search"
       />
-      <button class="btn btn-success my-2 my-sm-0" type="button">
+      <button class="btn btn-success my-2 my-sm-0" type="button" (click)="enviar()">
         Search
       </button>
       <button type="button" mat-icon-button>
         <mat-icon>help</mat-icon>
       </button>
       <!-- Dentro del siguiente ng-container irá un ngif para que aparezca el icono si es que SI esta logeado -->
-      <ng-container>
-        <button type="button" mat-icon-button (click)="salir()">
-          <mat-icon>account_circle</mat-icon>
-        </button>
+      <ng-container *ngIf="logueado()">
+        <p>Hola {{nomcorreo}}</p>
+        <button type="button" class="btn btn-danger mx-3" (click)="salir()">Logout</button>
       </ng-container>
       
     </mat-toolbar>

@@ -1,0 +1,58 @@
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <ng-container matColumnDef="position">
+        <th mat-header-cell *matHeaderCellDef>No.</th>
+        <td mat-cell *matCellDef="let element">{{ element.position }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="brand">
+        <th mat-header-cell *matHeaderCellDef>Brand</th>
+        <td mat-cell *matCellDef="let element">{{ element.brand }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef>Name</th>
+        <td mat-cell *matCellDef="let element">{{ element.name }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="os">
+        <th mat-header-cell *matHeaderCellDef>OS</th>
+        <td mat-cell *matCellDef="let element">{{ element.os }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="resolution">
+        <th mat-header-cell *matHeaderCellDef>Resolution</th>
+        <td mat-cell *matCellDef="let element">{{ element.resolution }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="cpu">
+        <th mat-header-cell *matHeaderCellDef>CPU</th>
+        <td mat-cell *matCellDef="let element">{{ element.cpu }}</td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+</table>
+
+<form action="">
+    <label id="nomcel">Nombre</label>
+    <input type="text" id="nomcel">
+    <button type="submit" value="Enviar"></button>
+</form>
+<!--
+<mat-card class="example-card">
+    <mat-card-header>
+      <mat-card-title>{{ element.name }}</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <ul>
+          <li>{{ element.brand }}</li>
+          <li>{{ element.os }}</li>
+          <li>{{ element.resolution }}</li>
+          <li>{{ element.cpu }}</li>
+      </ul>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-button>COMPARAR</button>
+    </mat-card-actions>
+  </mat-card>
+-->

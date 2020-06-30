@@ -24,6 +24,8 @@ import { AngularFireDatabaseModule } from "@angular/fire/database";
 import { AngularFirestoreModule } from "@angular/fire/firestore";
 import { environment } from "../environments/environment";
 import { LoggedinComponent } from './loggedin/loggedin.component';
+import { AdminComponent } from './admin/admin.component';
+import { NodejsService } from "./services/nodejs.service";
 
 
 
@@ -39,7 +41,8 @@ import { LoggedinComponent } from './loggedin/loggedin.component';
     MainNavComponent,
     ModalComponent,
     ModalLogInComponent,
-    LoggedinComponent
+    LoggedinComponent,
+    AdminComponent
   ],
   entryComponents: [
     ModalComponent,
@@ -60,7 +63,7 @@ import { LoggedinComponent } from './loggedin/loggedin.component';
     AngularFirestoreModule
 
   ],
-  providers: [MessageService],
+  providers: [MessageService, NodejsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
