@@ -32,7 +32,12 @@ export class ModalComponent implements OnInit {
       // Los valores están dentro de this.form.value
       // Por ejemplo: this.form.value.password
       this.authService.registerWithEmail(this.form.value.email,this.form.value.password);
-      swal('Account registered!', 'Welcome to Smart Brawl!', 'success');
+      if(this.authService.currentUser){
+        swal('Account registered!', 'Welcome to Smart Brawl!', 'success');
+      }
+      else{
+        swal('Error!', 'Verify your data...', 'error');
+      }
     }
     else {
       swal('Error!', 'Passwords must match.', 'error');

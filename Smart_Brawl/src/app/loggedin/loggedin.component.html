@@ -9,6 +9,12 @@
             <h5>{{dat.os}}</h5>
             <h5>{{dat.resolution}}</h5>
             <h5>{{dat.cpu}}</h5>
+            <ngx-qrcode 
+                elementType="url" 
+                [value] = "dat.url"
+                cssClass = "aclass"
+                errorCorrectionLevel = "L">
+            </ngx-qrcode>
       </div>
       <div class="card-footer">
           <button type="button" class="btn btn-outline-success">Compare</button>
