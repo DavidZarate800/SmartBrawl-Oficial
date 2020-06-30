@@ -31,18 +31,21 @@
       <!--ngIf para solo los administradores-->
       <ng-container *ngIf="recuperarAdmin()">
         <a mat-list-item [routerLink]="['/admin']"
-        ><span class="material-icons">admin_panel_settings</span>&nbsp; Admin Tool</a
-      >
+        ><span class="material-icons">admin_panel_settings</span>&nbsp; Admin Tool</a>
       </ng-container>
       <a mat-list-item [routerLink]="['/faqs']"
-        ><span class="material-icons">help</span>&nbsp; FAQs</a
-      >
+        ><span class="material-icons">help</span>&nbsp; FAQs</a>     
+      
+      <ng-container *ngIf="nologueado()">
       <a mat-list-item href="javascript:void(0)" (click)="openDialogLogIn()"
-        ><span class="material-icons">login</span>&nbsp; Login</a
-      >
+        ><span class="material-icons">login</span>&nbsp; Login</a>
+      </ng-container>
+
+      <ng-container *ngIf="nologueado()">
       <a mat-list-item href="javascript:void(0)" (click)="openDialog()"
-        ><span class="material-icons">add_circle</span>&nbsp; Register!</a
-      >
+        ><span class="material-icons">add_circle</span>&nbsp; Register!</a>
+      </ng-container>
+
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>

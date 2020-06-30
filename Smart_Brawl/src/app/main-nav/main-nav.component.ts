@@ -29,16 +29,13 @@ export class MainNavComponent {
 
   constructor(private nodejs:NodejsService,private breakpointObserver: BreakpointObserver, private dialog: MatDialog, private authService:AuthService) {}
 
-
-  enviar():void{
-    
+  enviar():void{    
     let urlapi = `https://nodeapi-9b54e.web.app/api`;
     //console.log(urlapi);
     this.nodejs.getJson(urlapi).subscribe((data:any)=>{
       this.mensaje = data;
       console.log(this.mensaje);
-
-    } );
+    });
   }
 
 
@@ -61,6 +58,12 @@ export class MainNavComponent {
     }
   }
 
+  nologueado(){
+    if(!this.authService.currentUser ){
+      return true;
+    }
+  }
+  
   recuperarAdmin(){
     if(this.authService.currentUser ){
       if(this.authService.currentUser.email == "admin@admin.com" ){
