@@ -26,12 +26,16 @@ export class ModalLogInComponent implements OnInit {
    
     if (this.form.valid) {
       this.authService.loginWithEmail(this.form.value.email,this.form.value.password);
-      if(this.authService.currentUser){
+      if(this.authService.isUserEmailLoggedIn){
         swal('Successful log in!', 'Welcome to Smart Brawl!', 'success');
       }
       else{
-        //sunmarle 1 a los intentos 
+        if(this.authService.currentUser){
+          swal('Successful log in!', 'Welcome to Smart Brawl!', 'success');
+        }
+        /*sumarle 1 a los intentos 
         swal('Error!', 'Verify your data...', 'error');
+        */
       }
     }
     /*

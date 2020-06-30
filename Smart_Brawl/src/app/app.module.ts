@@ -27,6 +27,7 @@ import { LoggedinComponent } from './loggedin/loggedin.component';
 import { AdminComponent } from './admin/admin.component';
 import { NodejsService } from "./services/nodejs.service";
 
+import { NgxQRCodeModule } from '@techiediaries/ngx-qrcode';
 
 
 @NgModule({
@@ -60,7 +61,8 @@ import { NodejsService } from "./services/nodejs.service";
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
-    AngularFirestoreModule
+    AngularFirestoreModule,
+    NgxQRCodeModule
 
   ],
   providers: [MessageService, NodejsService],
