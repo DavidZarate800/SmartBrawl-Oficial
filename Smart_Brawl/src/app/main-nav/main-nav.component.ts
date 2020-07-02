@@ -5,21 +5,18 @@ import { Component } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
-import { AuthService } from "../services/auth.service";
-import { NodejsService } from "../services/nodejs.service";
-
+import { AuthService } from '../services/auth.service';
+import { NodejsService } from '../services/nodejs.service';
+import swal from '../../../node_modules/sweetalert';
 
 @Component({
   selector: 'app-main-nav',
   templateUrl: './main-nav.component.html',
   styleUrls: ['./main-nav.component.css']
 })
-export class MainNavComponent {  
+export class MainNavComponent {
   nomcorreo: string;
-  mensaje:string;
-
-
-
+  mensaje: string;
 
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
@@ -27,46 +24,62 @@ export class MainNavComponent {
       shareReplay()
     );
 
-  constructor(private nodejs:NodejsService,private breakpointObserver: BreakpointObserver, private dialog: MatDialog, private authService:AuthService) {}
+  constructor(
+    private nodejs: NodejsService,
+    private breakpointObserver: BreakpointObserver,
+    private dialog: MatDialog,
+    private authService: AuthService
+  ) { }
 
-  enviar():void{    
-    let urlapi = `https://nodeapi-9b54e.web.app/api`;
-    //console.log(urlapi);
-    this.nodejs.getJson(urlapi).subscribe((data:any)=>{
+  enviar(): void {
+    const urlapi = `https://nodeapi-9b54e.web.app/api`;
+    // console.log(urlapi);
+    this.nodejs.getJson(urlapi).subscribe((data: any) => {
       this.mensaje = data;
       console.log(this.mensaje);
     });
   }
 
 
-  openDialog(){
+  openDialog() {
     this.dialog.open(ModalComponent);
   }
-  
-  openDialogLogIn(){
+
+  openDialogLogIn() {
     this.dialog.open(ModalLogInComponent);
   }
 
-  salir(){
-    this.authService.singout();
+  salir() {
+    swal({
+      title: 'Logout',
+      text: 'Are you sure you wanna logout?',
+      icon: 'warning',
+      buttons: true,
+      dangerMode: true,
+    })
+    .then((logOut) => {
+      if (logOut) {
+        this.authService.singout();
+      }
+    });
   }
 
-  logueado(){
-    if(this.authService.currentUser ){
+  logueado() {
+    if (this.authService.currentUser) {
       this.nomcorreo = this.authService.currentUser.email;
       return true;
     }
   }
 
-  nologueado(){
-    if(!this.authService.currentUser ){
+  nologueado() {
+    if (!this.authService.currentUser) {
       return true;
     }
   }
-  
-  recuperarAdmin(){
-    if(this.authService.currentUser ){
-      if(this.authService.currentUser.email == "admin@admin.com" ){
+
+  recuperarAdmin() {
+    if (this.authService.currentUser) {
+      if (this.authService.currentUser.email === 'admin@admin.com') {
         return true;
       }
     }
@@ -75,6 +88,6 @@ export class MainNavComponent {
 
 
 
-  
+
 
 }
