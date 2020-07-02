@@ -7,7 +7,9 @@
     [mode]="(isHandset$ | async) ? 'over' : 'side'"
     [opened]="(isHandset$ | async) === false"
   >
-    <mat-toolbar color="primary"><span class="material-icons">widgets</span>&nbsp; Menu</mat-toolbar>
+    <mat-toolbar color="primary"
+      ><span class="material-icons">widgets</span>&nbsp; Menu</mat-toolbar
+    >
     <mat-nav-list>
       <a mat-list-item href="#">
         <img src="../../assets/logo.png" width="30" height="30" alt="" />
@@ -25,27 +27,31 @@
       <!--ngIf para solo los usuarios logueados-->
       <ng-container *ngIf="logueado()">
         <a mat-list-item [routerLink]="['/loggedin']"
-        ><span class="material-icons">smartphone</span>&nbsp; Comparativa</a
-      >
+          ><span class="material-icons">smartphone</span>&nbsp; Comparative</a
+        >
       </ng-container>
       <!--ngIf para solo los administradores-->
       <ng-container *ngIf="recuperarAdmin()">
         <a mat-list-item [routerLink]="['/admin']"
-        ><span class="material-icons">admin_panel_settings</span>&nbsp; Admin Tool</a>
+          ><span class="material-icons">admin_panel_settings</span>&nbsp; Admin
+          Tool</a
+        >
       </ng-container>
       <a mat-list-item [routerLink]="['/faqs']"
-        ><span class="material-icons">help</span>&nbsp; FAQs</a>     
-      
+        ><span class="material-icons">help</span>&nbsp; FAQs</a
+      >
+
       <ng-container *ngIf="nologueado()">
-      <a mat-list-item href="javascript:void(0)" (click)="openDialogLogIn()"
-        ><span class="material-icons">login</span>&nbsp; Login</a>
+        <a mat-list-item href="javascript:void(0)" (click)="openDialogLogIn()"
+          ><span class="material-icons">login</span>&nbsp; Login</a
+        >
       </ng-container>
 
       <ng-container *ngIf="nologueado()">
-      <a mat-list-item href="javascript:void(0)" (click)="openDialog()"
-        ><span class="material-icons">add_circle</span>&nbsp; Register!</a>
+        <a mat-list-item href="javascript:void(0)" (click)="openDialog()"
+          ><span class="material-icons">add_circle</span>&nbsp; Register!</a
+        >
       </ng-container>
-
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
@@ -65,7 +71,11 @@
         placeholder="Search Equipment"
         aria-label="Search"
       />
-      <button class="btn btn-success my-2 my-sm-0" type="button" (click)="enviar()">
+      <button
+        class="btn btn-success my-2 my-sm-0"
+        type="button"
+        (click)="enviar()"
+      >
         Search
       </button>
       <button type="button" mat-icon-button>
@@ -73,10 +83,12 @@
       </button>
       <!-- Dentro del siguiente ng-container irá un ngif para que aparezca el icono si es que SI esta logeado -->
       <ng-container *ngIf="logueado()">
-        <p>Hola {{nomcorreo}}</p>
-        <button type="button" class="btn btn-danger mx-3" (click)="salir()">Logout</button>
+        <span>Hey {{ nomcorreo }}!</span>
+        &nbsp; &nbsp;
+        <button mat-raised-button color="warn" (click)="salir()">
+          <span class="material-icons"> power_settings_new </span>
+        </button>
       </ng-container>
-      
     </mat-toolbar>
     <!-- Add Content Here -->
     <div class="container mt-3">

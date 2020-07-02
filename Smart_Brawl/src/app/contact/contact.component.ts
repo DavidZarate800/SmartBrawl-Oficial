@@ -2,7 +2,7 @@ import { MessageService } from './../services/message.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import swal from '../../../node_modules/sweetalert';
-import { SpeechService } from '../services/speech.service'
+import { SpeechService } from '../services/speech.service';
 
 @Component({
   selector: 'app-contact',
@@ -20,29 +20,29 @@ export class ContactComponent implements OnInit {
       email: ['', [Validators.required, Validators.email]],
       message: ['', Validators.required],
       rate: ['', Validators.required],
-      agree: ['', Validators.required]
+      agree: ['', Validators.requiredTrue]
     });
   }
 
   ngOnInit(): void {
   }
 
-  //Metodos de Speech
-  start(html){
-    this.lectura.start(html); 
+  // Metodos de Speech
+  start(html) {
+    this.lectura.start(html);
   }
-  pause(){
+  pause() {
     this.lectura.pause();
   }
-  resume(){
+  resume() {
     this.lectura.resume();
   }
 
-  cancel(){
+  cancel() {
     this.lectura.cancel();
   }
-  //Fin metodos Speech
-  
+  // Fin metodos Speech
+
   formatLabel(value: number) {
     if (value >= 1000) {
       return Math.round(value / 10000);
@@ -52,7 +52,7 @@ export class ContactComponent implements OnInit {
   }
 
   submit() {
-    if (!this.form.valid){
+    if (!this.form.valid) {
       swal('Error!', 'Verify required data...', 'error');
     }
     else {

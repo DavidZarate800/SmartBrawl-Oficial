@@ -1,100 +1,189 @@
 <div class="container register">
-    <div class="row">
-        <div class="col-md-3 register-left">
-            <img src="https://image.ibb.co/n7oTvU/logo_white.png" alt=""/>
-            <h3>Bienvenido</h3>
-            <p>Agrega o modifica la infromacion de un celular!</p>
-            <br/>
-        </div>
-        <div class="col-md-9 register-right">
-            <ul class="nav nav-tabs nav-justified" id="myTab" role="tablist">
-                <li class="nav-item">
-                    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Añadir</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Modificar</a>
-                </li>
-            </ul>
-
-            <div class="tab-content" id="myTabContent">
-                <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                    <h3 class="register-heading">Añadir nuevo celular</h3>
-                    
-                    <form [formGroup]="celForm" (ngSubmit)="anadir()">
-                    <div class="row register-form">
-                        <div class="col-md-6">
-
-                            <div class="form-group">
-                                <label> Marca </label>
-                                <input type="text" formControlName="marca">
-                            </div>
-                            <div class="form-group">
-                                <label> Nombre </label>
-                                <input type="text" formControlName="modelo">
-                            </div>
-                            <div class="form-group custom-file">
-                                <label> Cpu </label>
-                                <input type="text" formControlName="cpu">   
-                            </div>
-                        </div>
-                      
-                        <div class="col-md-6">
-                           <div class="form-group">
-                                <label> OS </label>
-                                <input type="text" formControlName="os">
-                            </div>
-                            <div class="form-group">
-                                <label> Resolucion </label>
-                                <input type="text" formControlName="resolucion">
-                            </div>
-                            <input type="submit" class="btnRegister"  value="Añadir"/>
-                        </div>
-                     
-                    </div>
-                    </form>
-                </div>
-
-                <div class="tab-pane fade show" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                    <h3  class="register-heading">Modificar celular</h3>
-                    <form [formGroup]="celForm" (ngSubmit)="modificar()">
-                        <div class="row register-form">
-                            <select class="browser-default custom-select mb-3">
-                                <option selected>Selecciona modelo a modificar</option>
-                                <!-- Aqui va un ngfor para traer los modelos de la bd -->
-                                <option value="1">One</option>
-                                <option value="2">Two</option>
-                                <option value="3">Three</option>
-                            </select>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label> Marca </label>
-                                    <input type="text" formControlName="marca">
-                                </div>
-                                <div class="form-group">
-                                    <label> Nombre </label>
-                                    <input type="text" formControlName="modelo">
-                                </div>
-                                <div class="form-group custom-file">
-                                    <label> Cpu </label>
-                                    <input type="text" formControlName="cpu">   
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                               <div class="form-group">
-                                    <label> OS </label>
-                                    <input type="text" formControlName="os">
-                                </div>
-                                <div class="form-group">
-                                    <label> Resolucion </label>
-                                    <input type="text" formControlName="resolucion">
-                                </div>
-                                <input type="submit" class="btnRegister"  value="Modificar"/>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div> 
-        </div>
+  <div class="row">
+    <div class="col-md-3 register-left">
+      <img src="https://image.ibb.co/n7oTvU/logo_white.png" alt="" />
+      <h3>¡Bienvenido compadre!</h3>
+      <p>¡Agrega o modifica la infromacion de un celular!</p>
+      <br />
     </div>
+    <div class="col-md-9 register-right">
+      <ul class="nav nav-tabs nav-justified" id="myTab" role="tablist">
+        <li class="nav-item">
+          <a
+            class="nav-link active"
+            id="home-tab"
+            data-toggle="tab"
+            href="#home"
+            role="tab"
+            aria-controls="home"
+            aria-selected="true"
+            >Añadir</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            id="profile-tab"
+            data-toggle="tab"
+            href="#profile"
+            role="tab"
+            aria-controls="profile"
+            aria-selected="false"
+            >Modificar</a
+          >
+        </li>
+      </ul>
 
+      <div class="tab-content" id="myTabContent">
+        <div
+          class="tab-pane fade show active"
+          id="home"
+          role="tabpanel"
+          aria-labelledby="home-tab"
+        >
+          <h3 class="register-heading">Añadir nuevo celular</h3>
+
+          <form id="celForm1" [formGroup]="celForm1" (ngSubmit)="anadir()">
+            <div class="row register-form">
+              <div class="col-md-6">
+                <mat-form-field appearence="fill">
+                  <input
+                    matInput
+                    placeholder="Marca"
+                    class="form-control"
+                    name="marca"
+                    formControlName="marca"
+                  />
+                </mat-form-field>
+                <mat-form-field appearence="fill">
+                  <input
+                    matInput
+                    placeholder="Nombre"
+                    class="form-control"
+                    name="nombre"
+                    formControlName="nombre"
+                  />
+                </mat-form-field>
+                <mat-form-field appearence="fill">
+                  <input
+                    matInput
+                    placeholder="CPU"
+                    class="form-control"
+                    name="cpu"
+                    formControlName="cpu"
+                  />
+                </mat-form-field>
+              </div>
+
+              <div class="col-md-6">
+                <div class="form-group">
+                  <mat-form-field appearence="fill">
+                    <input
+                      matInput
+                      placeholder="OS"
+                      class="form-control"
+                      name="os"
+                      formControlName="os"
+                    />
+                  </mat-form-field>
+                </div>
+                <div class="form-group">
+                  <mat-form-field appearence="fill">
+                    <input
+                      matInput
+                      placeholder="Resolución"
+                      class="form-control"
+                      name="resolucion"
+                      formControlName="resolucion"
+                    />
+                  </mat-form-field>
+                </div>
+                <input type="submit" class="btnRegister" value="Añadir" />
+              </div>
+            </div>
+          </form>
+        </div>
+
+        <div
+          class="tab-pane fade show"
+          id="profile"
+          role="tabpanel"
+          aria-labelledby="profile-tab"
+        >
+          <h3 class="register-heading">Modificar celular</h3>
+          <form id="celForm2" [formGroup]="celForm2" (ngSubmit)="modificar()">
+            <div class="row register-form">
+              <mat-label> Selecciona modelo a modificar </mat-label>
+              <mat-select
+                class="form-control"
+                name="celModif"
+                formControlName="celModif"
+              >
+                <mat-option value="blah">Eins</mat-option>
+                <mat-option value="meh">Zwei</mat-option>
+                <mat-option value="figue huele feo">Drei</mat-option>
+              </mat-select>
+              <div class="col-md-6">
+                  <br>
+                <mat-form-field appearence="fill">
+                  <input
+                    matInput
+                    placeholder="Marca"
+                    class="form-control"
+                    name="marca"
+                    formControlName="marca"
+                  />
+                </mat-form-field>
+                <mat-form-field appearence="fill">
+                  <input
+                    matInput
+                    placeholder="Nombre"
+                    class="form-control"
+                    name="nombre"
+                    formControlName="nombre"
+                  />
+                </mat-form-field>
+                <mat-form-field appearence="fill">
+                  <input
+                    matInput
+                    placeholder="CPU"
+                    class="form-control"
+                    name="cpu"
+                    formControlName="cpu"
+                  />
+                </mat-form-field>
+              </div>
+
+              <div class="col-md-6">
+                  <br>
+                <div class="form-group">
+                  <mat-form-field appearence="fill">
+                    <input
+                      matInput
+                      placeholder="OS"
+                      class="form-control"
+                      name="os"
+                      formControlName="os"
+                    />
+                  </mat-form-field>
+                </div>
+                <div class="form-group">
+                  <mat-form-field appearence="fill">
+                    <input
+                      matInput
+                      placeholder="Resolución"
+                      class="form-control"
+                      name="resolucion"
+                      formControlName="resolucion"
+                    />
+                  </mat-form-field>
+                </div>
+                <input type="submit" class="btnRegister" value="Añadir" />
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

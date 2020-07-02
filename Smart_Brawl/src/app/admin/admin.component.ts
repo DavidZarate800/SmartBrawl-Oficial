@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import swal from '../../../node_modules/sweetalert';
 
 @Component({
   selector: 'app-admin',
@@ -7,29 +8,62 @@ import { FormControl, FormGroup } from '@angular/forms';
   styleUrls: ['./admin.component.css']
 })
 export class AdminComponent implements OnInit {
-  celForm = new FormGroup({
+  celForm1: any;
+  celForm2: any;
 
-    marca : new FormControl(''),
-    modelo : new FormControl(''),
-    cpu : new FormControl(''),
-    os : new FormControl(''),
-    resolucion : new FormControl('')
-  
-  });
+  constructor(private formBuilder: FormBuilder) {
+    // Form validation
+    this.celForm1 = formBuilder.group({
+      marca: ['', Validators.required],
+      nombre: ['', Validators.required],
+      cpu: ['', Validators.required],
+      os: ['', Validators.required],
+      resolucion: ['', Validators.required],
+    });
 
-  constructor() { }
+    this.celForm2 = formBuilder.group({
+      celModif: ['', Validators.required],
+      marca: ['', Validators.required],
+      nombre: ['', Validators.required],
+      cpu: ['', Validators.required],
+      os: ['', Validators.required],
+      resolucion: ['', Validators.required],
+    });
+  }
 
   ngOnInit(): void {
   }
 
   anadir() {
-    console.log (this.celForm.value);
-    console.log('enviado!');
+    if (!this.celForm1.valid) {
+      swal('Error!', 'Verify required data...', 'error');
+    }
+    else {
+      console.log(this.celForm1.value);
+      swal('Done!', 'New cellphone added.', 'success');
+      // Aqui se añade el teléfono nuevo a la BD
+    }
   }
-  
+
   modificar() {
-    console.log (this.celForm.value);
-    console.log('enviado!');
+    if (!this.celForm2.valid) {
+      swal('Error!', 'Verify required data...', 'error');
+    }
+    else {
+      swal({
+        title: 'Wait!',
+        text: 'Are you sure you wanna submit changes?',
+        icon: 'warning',
+        buttons: true,
+        dangerMode: true,
+      })
+      .then((change) => {
+        if (change) {
+          swal('Done!', 'Changes applied.', 'success');
+          console.log(this.celForm2.value);
+          // Aqui se mandan los datos modificados a la BD
+        }
+      });
+    }
   }
-  
 }
