@@ -29,7 +29,7 @@ export class MainNavComponent {
     private breakpointObserver: BreakpointObserver,
     private dialog: MatDialog,
     private authService: AuthService
-  ) { }
+  ) {  }
 
   enviar(): void {
     const urlapi = `http://localhost:5001/nodeapi-9b54e/us-central1/widgets/api`;

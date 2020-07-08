@@ -13,6 +13,7 @@ export class AdminComponent implements OnInit {
   celForm2: any;
   celForm3: any;
   cellphone: any;
+  bandera: boolean;
   cellected: any = {
     marca: '',
     nombre: '',
@@ -116,6 +117,7 @@ export class AdminComponent implements OnInit {
   }
 
   desplegar() {
+    this.bandera = true;
     this.nodejs.getAllPhones().subscribe(data => {
       this.cellphone = data.map(e => {
         return {
@@ -139,6 +141,7 @@ export class AdminComponent implements OnInit {
         };
       });
       console.log(this.cellphone);
+      this.bandera=false;
     });
   }
 

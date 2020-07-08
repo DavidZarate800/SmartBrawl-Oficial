@@ -28,6 +28,7 @@ import { AdminComponent } from './admin/admin.component';
 import { NodejsService } from "./services/nodejs.service";
 
 import { NgxQRCodeModule } from '@techiediaries/ngx-qrcode';
+import { LoadingComponent } from './loading/loading.component';
 
 
 @NgModule({
@@ -43,7 +44,8 @@ import { NgxQRCodeModule } from '@techiediaries/ngx-qrcode';
     ModalComponent,
     ModalLogInComponent,
     LoggedinComponent,
-    AdminComponent
+    AdminComponent,
+    LoadingComponent
   ],
   entryComponents: [
     ModalComponent,

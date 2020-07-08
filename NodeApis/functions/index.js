@@ -136,6 +136,13 @@ app.delete('/del/:id', (req, res) =>
 
 });
 
-
+app.post('/addCalif',(req, res)=>{
+  const calificacion = {
+    Calificacion: req.body.rate,
+    Tipo: req.body.reason
+  }
+  db.collection('Calificaciones').add(calificacion);
+  res.send({ result: "Succesful" });
+});
 
 exports.apis = functions.https.onRequest(app);

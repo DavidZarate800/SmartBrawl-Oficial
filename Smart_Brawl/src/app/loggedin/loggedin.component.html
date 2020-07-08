@@ -1,23 +1,95 @@
+<app-loading *ngIf="this.bandera"></app-loading>
 <div class="card-columns m-5">
-    <div class="card" *ngFor="let dat of datos">
-        <div class="card-header">
-            <h2 class="card-title">{{dat.name}}</h2>
+    <div class="card" *ngFor="let cell of cellphone">
+        <div class="card-header text-center">
+            <h2 class="card-title">{{cell.nombre}}</h2>
         </div>
         <div class="card-body">
-            <img [src]="dat.ruta" alt="" style="width: 100%;">
-            <h5>{{dat.brand}}</h5>
-            <h5>{{dat.os}}</h5>
-            <h5>{{dat.resolution}}</h5>
-            <h5>{{dat.cpu}}</h5>
+            <img [src]="cell.imgURL" alt="" style="width: 100%">
+            <br />
+            <h4 class="text-center mt-2"><strong>{{cell.marca}}</strong></h4>
+            <h4>{{cell.os}}</h4>
+            <h4>{{cell.resolucion}}</h4>
+            <h4>{{cell.cpu}}</h4>
+            <h4>{{cell.precio | currency:'MXN'}}</h4>
             <ngx-qrcode 
                 elementType="url" 
-                [value] = "dat.url"
+                [value] = "cell.qrURL"
                 cssClass = "aclass"
                 errorCorrectionLevel = "L">
             </ngx-qrcode>
       </div>
       <div class="card-footer">
-          <button type="button" class="btn btn-outline-success">Compare</button>
+          <button type="button" (click)='comparar(cell)' class="btn btn-outline-success">Compare</button>
       </div>
     </div>
-  </div>
+</div>
+
+<hr>
+<div class="container">
+<div class="row">
+    <!--CARD COMPARE 1-->
+    <div class="col-6">
+        <div class="card" *ngIf="cel1">
+            <div class="card-header text-center">
+                <h2 class="card-title">{{this.cel1.nombre}}</h2>
+            </div>
+            <div class="card-body">
+                <img [src]="this.cel1.imgURL" alt="" style="width: 100%;">
+                <br>
+                <h3><strong>Brand:</strong> {{this.cel1.marca}}</h3>
+                <h3><strong>CPU:</strong> {{this.cel1.cpu}}</h3>
+                <h3><strong>OS:</strong> {{this.cel1.os}}</h3>
+                <h3><strong>Display:</strong> {{this.cel1.pantalla}}</h3>
+                <h3><strong>Resolution:</strong> {{this.cel1.resolucion}}</h3>
+                <h3><strong>Dimentions:</strong> {{this.cel1.dimensiones}}</h3>
+                <h3><strong>Weight:</strong> {{this.cel1.peso}}</h3>
+                <h3><strong>Camera:</strong> {{this.cel1.camara}}</h3>
+                <h3><strong>Storage:</strong> {{this.cel1.almacenamiento}}</h3>
+                <h3><strong>Battery:</strong> {{this.cel1.bateria}}</h3>
+                <h3><strong>RAM:</strong> {{this.cel1.ram}}</h3>
+                <h3><strong>PPI:</strong> {{this.cel1.ppi}}</h3>
+                <h3><strong>Price:</strong> {{this.cel1.precio | currency:'MXN'}}</h3>
+                <ngx-qrcode 
+                    elementType="url" 
+                    [value] = "this.cel1.qrURL"
+                    cssClass = "aclass"
+                    errorCorrectionLevel = "L">
+                </ngx-qrcode>
+            </div>
+        </div>
+    </div>
+
+
+    <!--CARD COMPARE 2-->
+    <div class="col-6">
+        <div class="card" *ngIf="cel2">
+            <div class="card-header text-center">
+                <h2 class="card-title">{{this.cel2.nombre}}</h2>
+            </div>
+            <div class="card-body">
+                <img [src]="this.cel2.imgURL" alt="" style="width: 100%;">
+                <h5>{{this.cel2.marca}}</h5>
+                <h5>{{this.cel2.cpu}}</h5>
+                <h5>{{this.cel2.os}}</h5>
+                <h5>{{this.cel2.pantalla}}</h5>
+                <h5>{{this.cel2.resolucion}}</h5>
+                <h5>{{this.cel2.dimensiones}}</h5>
+                <h5>{{this.cel2.peso}}</h5>
+                <h5>{{this.cel2.camara}}</h5>
+                <h5>{{this.cel2.almacenamiento}}</h5>
+                <h5>{{this.cel2.bateria}}</h5>
+                <h5>{{this.cel2.ram}}</h5>
+                <h5>{{this.cel2.ppi}}</h5>
+                <h5>{{this.cel2.precio | currency:'MXN'}}</h5>
+                <ngx-qrcode 
+                    elementType="url" 
+                    [value] = "this.cel2.qrURL"
+                    cssClass = "aclass"
+                    errorCorrectionLevel = "L">
+                </ngx-qrcode>
+            </div>
+        </div>
+    </div>
+</div>
+</div>

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NodejsService } from '../services/nodejs.service';
 
 @Component({
   selector: 'app-loggedin',
@@ -7,42 +8,54 @@ import { Component, OnInit } from '@angular/core';
 })
 
 export class LoggedinComponent implements OnInit {
-  
-  constructor() { }
+  cellphone: any;
+  cont: number = 0;
+  cel1: any;
+  cel2: any;
+  bandera: boolean;
+
+  constructor(private nodejs: NodejsService) { }
 
   ngOnInit(): void {
+    this.bandera = true;
+    this.nodejs.getAllPhones().subscribe(data => {
+      this.cellphone = data.map(e => {
+        return {
+          marca: e.payload.doc.data()['Brand'],
+          nombre: e.payload.doc.data()['Name'],
+          cpu: e.payload.doc.data()['CPU'],
+          os: e.payload.doc.data()['OS'],
+          resolucion: e.payload.doc.data()['Resolution'],
+          imgURL: e.payload.doc.data()['URL_IMG'],
+          qrURL: e.payload.doc.data()['URL_QR'],
+          peso: e.payload.doc.data()['Weight'],
+          bateria: e.payload.doc.data()['Battery'],
+          camara: e.payload.doc.data()['Camera'],
+          pantalla: e.payload.doc.data()['Display'],
+          ppi: e.payload.doc.data()['PPI'],
+          precio: e.payload.doc.data()['Price'],
+          ram: e.payload.doc.data()['RAM'],
+          dimensiones: e.payload.doc.data()['Dimensions'],
+          almacenamiento: e.payload.doc.data()['Storage'],
+          id: e.payload.doc.id
+        };
+      });
+      console.log(this.cellphone);
+      this.bandera=false;
+    });
   }
   
-  datos: celulares[] = [
-    { brand: 'Samsung', name: 'Galaxy S20 / S20 Plus', os: 'Android 10', resolution: '3200 x 1440', cpu: 'Snapdragon 865', ruta: '../../assets/celulares/GalaxyS20.jpeg', url: 'https://www.samsung.com/us/mobile/galaxy-s20-5g/' },
-    { brand: 'Apple', name: 'iPhone 11', os: 'iOS 13', resolution: '828 x 1792', cpu: 'A13 Bionic', ruta: '../../assets/celulares/Iphone11.jpeg', url: 'https://www.apple.com/iphone-11/' },
-    { brand: 'Samsung', name: 'Galaxy Note 10 Plus', os: 'Android 9', resolution: '2280 x 1080', cpu: 'Snapdragon 855', ruta: '../../assets/celulares/GalaxyNote.jpeg', url: 'https://www.samsung.com/mx/smartphones/galaxy-note10/' },
-    { brand: 'Apple', name: 'iPhone 11 Pro / 11 Pro Max', os: 'iOS 13', resolution: '1242 x 2688', cpu: 'A13 Bionic', ruta: '../../assets/celulares/Iphone11-Pro.jpeg', url: 'https://www.apple.com/iphone-11/' },
-    { brand: 'OnePlus', name: 'OnePlus 8 Pro', os: 'Android 10', resolution: '3168 x 1440', cpu: 'Snapdragon 865', ruta: '../../assets/celulares/OnePlus8Pro.jpeg', url: 'https://www.oneplus.com/8-pro' },
-    { brand: 'Apple', name: 'iPhone SE (2020)', os: 'iOS 13', resolution: '1134 x 750', cpu: 'A13 Bionic', ruta: '../../assets/celulares/IphoneSE.jpeg', url: 'https://www.apple.com/iphone-se/' },
-    { brand: 'Samsung', name: 'Galaxy S20 Ultra', os: 'Android 10', resolution: '3200 x 1440', cpu: 'Snapdragon 865', ruta: '../../assets/celulares/GalaxyS20Ultra.jpeg', url: 'https://www.samsung.com/us/mobile/galaxy-s20-5g/' },
-    { brand: 'Samsung', name: 'Galaxy S10/S10 Plus', os: 'Android Pie', resolution: '3040×1440', cpu: 'Snapdragon 855', ruta: '../../assets/celulares/GalaxyS20.jpeg', url: 'https://www.samsung.com/mx/smartphones/galaxy-s10/' },
-    { brand: 'OnePlus', name: 'OnePlus 7 Pro', os: 'Android Pie', resolution: 'Quad HD+', cpu: 'Snapdragon 855', ruta: '../../assets/celulares/OnePlus7Pro.jpeg', url: 'https://www.oneplus.com/global/7pro#/' },
-    { brand: 'Google', name: 'Pixel 4 XL', os: 'Android 10', resolution: '1440 x 3040', cpu: 'Snapdragon 855', ruta: '../../assets/celulares/Pixel.jpeg', url: 'https://www.oneplus.com/global/7pro#/' }
-  ];
-
-  comparados: celulares[];
-  const = 0;
-
-  comparar(nombre: string){
-    for (const x of this.datos){
-      if (nombre === x.name){
-      }
+  comparar(cell: any){
+    if(this.cont == 1){
+      this.cel2 = this.cel1;
+      this.cel1 = cell;
     }
+    if(this.cont == 0){
+      this.cel1 = cell;
+      this.cont++;
+    }
+    console.log(this.cel1);
+    console.log(this.cel2);
   }
-}
 
-export interface celulares{
-  brand: string;
-  name: string;
-  os: string;
-  resolution: string;
-  cpu: string;
-  ruta: string;
-  url: string;
 }

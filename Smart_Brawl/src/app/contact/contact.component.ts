@@ -11,7 +11,9 @@ import { SpeechService } from '../services/speech.service';
 })
 export class ContactComponent implements OnInit {
   form: any;
-
+  bandera: boolean;
+  calificacion: string;
+  tipo: string;
   constructor(private formBuilder: FormBuilder, public messageService: MessageService, private lectura: SpeechService) {
     // Form validation
     this.form = formBuilder.group({
@@ -22,6 +24,7 @@ export class ContactComponent implements OnInit {
       rate: ['', Validators.required],
       agree: ['', Validators.requiredTrue]
     });
+
   }
 
   ngOnInit(): void {
@@ -52,14 +55,24 @@ export class ContactComponent implements OnInit {
   }
 
   submit() {
+    this.bandera = true;
+    /*this.calificacion = this.form.value['rate'];
+    this.tipo = this.form.value['reason'];
+    console.log(this.calificacion);
+    console.log(this.tipo);
+    */
+   this.form.value['rate'] = this.form.value['rate']/10000;
     if (!this.form.valid) {
       swal('Error!', 'Verify required data...', 'error');
     }
     else {
       console.log(this.form.value);
       this.messageService.sendMessage(this.form.value).subscribe(() => {
+        this.bandera = false;
         swal('Message sent!', 'We will aswer you.', 'success');
       });
+      this.messageService.sendCalif(this.form.value).subscribe(() => { });
     }
+
   }
 }
