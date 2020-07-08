@@ -7,7 +7,7 @@ import { Injectable } from '@angular/core';
 export class MessageService {
   constructor(private http: HttpClient) { }
   sendMessage(body: any) {
-    return this.http.post('http://localhost:3000/form', body);
+    return this.http.post('https://us-central1-pruebaachida.cloudfunctions.net/apis/form', body);
   }
 }
 

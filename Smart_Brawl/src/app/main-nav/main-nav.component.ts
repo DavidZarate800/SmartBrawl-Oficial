@@ -32,8 +32,8 @@ export class MainNavComponent {
   ) { }
 
   enviar(): void {
-    const urlapi = `https://nodeapi-9b54e.web.app/api`;
-    // console.log(urlapi);
+    const urlapi = `http://localhost:5001/nodeapi-9b54e/us-central1/widgets/api`;
+     console.log(urlapi);
     this.nodejs.getJson(urlapi).subscribe((data: any) => {
       this.mensaje = data;
       console.log(this.mensaje);
@@ -54,7 +54,7 @@ export class MainNavComponent {
       title: 'Logout',
       text: 'Are you sure you wanna logout?',
       icon: 'warning',
-      buttons: true,
+      buttons: [true,true],
       dangerMode: true,
     })
     .then((logOut) => {

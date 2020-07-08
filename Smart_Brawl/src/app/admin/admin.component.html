@@ -9,181 +9,274 @@
     <div class="col-md-9 register-right">
       <ul class="nav nav-tabs nav-justified" id="myTab" role="tablist">
         <li class="nav-item">
-          <a
-            class="nav-link active"
-            id="home-tab"
-            data-toggle="tab"
-            href="#home"
-            role="tab"
-            aria-controls="home"
-            aria-selected="true"
-            >Añadir</a
-          >
+          <a class="nav-link active" id="anadir-tab" data-toggle="tab" href="#anadir" role="tab" aria-controls="anadir"
+            aria-selected="true">Añadir</a>
         </li>
         <li class="nav-item">
-          <a
-            class="nav-link"
-            id="profile-tab"
-            data-toggle="tab"
-            href="#profile"
-            role="tab"
-            aria-controls="profile"
-            aria-selected="false"
-            >Modificar</a
-          >
+          <a class="nav-link" id="modificar-tab" data-toggle="tab" href="#modificar" role="tab"
+            aria-controls="modificar" aria-selected="false" (click)="desplegar()">Modificar</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" id="eliminar-tab" data-toggle="tab" href="#eliminar" role="tab" aria-controls="eliminar"
+            aria-selected="false" (click)="desplegar()">Eliminar</a>
         </li>
       </ul>
 
       <div class="tab-content" id="myTabContent">
-        <div
-          class="tab-pane fade show active"
-          id="home"
-          role="tabpanel"
-          aria-labelledby="home-tab"
-        >
+        <div class="tab-pane fade show active" id="anadir" role="tabpanel" aria-labelledby="anadir-tab">
           <h3 class="register-heading">Añadir nuevo celular</h3>
 
           <form id="celForm1" [formGroup]="celForm1" (ngSubmit)="anadir()">
             <div class="row register-form">
-              <div class="col-md-6">
+              <div class="col-6">
                 <mat-form-field appearence="fill">
-                  <input
-                    matInput
-                    placeholder="Marca"
-                    class="form-control"
-                    name="marca"
-                    formControlName="marca"
-                  />
+                  <input matInput placeholder="Marca" class="form-control" name="marca" formControlName="marca" />
                 </mat-form-field>
                 <mat-form-field appearence="fill">
-                  <input
-                    matInput
-                    placeholder="Nombre"
-                    class="form-control"
-                    name="nombre"
-                    formControlName="nombre"
-                  />
+                  <input matInput placeholder="Nombre" class="form-control" name="nombre" formControlName="nombre" />
                 </mat-form-field>
                 <mat-form-field appearence="fill">
-                  <input
-                    matInput
-                    placeholder="CPU"
-                    class="form-control"
-                    name="cpu"
-                    formControlName="cpu"
-                  />
+                  <input matInput placeholder="CPU" class="form-control" name="cpu" formControlName="cpu" />
+                </mat-form-field>
+                <mat-form-field appearence="fill">
+                  <input matInput placeholder="URL QR" class="form-control" name="qrURL" formControlName="qrURL" />
+                </mat-form-field>
+                <mat-form-field appearence="fill">
+                  <input matInput placeholder="URL IMG" class="form-control" name="imgURL" formControlName="imgURL" />
+                </mat-form-field>
+                <mat-form-field appearence="fill">
+                  <input matInput placeholder="Peso" class="form-control" name="weight" formControlName="weight" />
+                </mat-form-field>
+                <mat-form-field appearence="fill">
+                  <input matInput placeholder="Batería" class="form-control" name="battery" formControlName="battery" />
+                </mat-form-field>
+                <mat-form-field appearence="fill">
+                  <input matInput placeholder="Cámara" class="form-control" name="camera" formControlName="camera" />
                 </mat-form-field>
               </div>
 
-              <div class="col-md-6">
-                <div class="form-group">
-                  <mat-form-field appearence="fill">
-                    <input
-                      matInput
-                      placeholder="OS"
-                      class="form-control"
-                      name="os"
-                      formControlName="os"
-                    />
-                  </mat-form-field>
-                </div>
-                <div class="form-group">
-                  <mat-form-field appearence="fill">
-                    <input
-                      matInput
-                      placeholder="Resolución"
-                      class="form-control"
-                      name="resolucion"
-                      formControlName="resolucion"
-                    />
-                  </mat-form-field>
-                </div>
-                <input type="submit" class="btnRegister" value="Añadir" />
+
+
+              <div class="col-6">
+
+                <mat-form-field appearence="fill">
+                  <input matInput placeholder="SO" class="form-control" name="os" formControlName="os" />
+                </mat-form-field>
+                <mat-form-field appearence="fill">
+                  <input matInput placeholder="Resolución" class="form-control" name="resolucion"
+                    formControlName="resolucion" />
+                </mat-form-field>
+                <mat-form-field appearence="fill">
+                  <input matInput placeholder="Dimensiones" class="form-control" name="dimensions"
+                    formControlName="dimensions" />
+                </mat-form-field>
+                <mat-form-field appearence="fill">
+                  <input matInput placeholder="Pantalla" class="form-control" name="display"
+                    formControlName="display" />
+                </mat-form-field>
+                <mat-form-field appearence="fill">
+                  <input matInput placeholder="PPP" class="form-control" name="ppi" formControlName="ppi" />
+                </mat-form-field>
+                <mat-form-field appearence="fill">
+                  <input matInput placeholder="Precio" class="form-control" name="price" formControlName="price" />
+                </mat-form-field>
+                <mat-form-field appearence="fill">
+                  <input matInput placeholder="RAM" class="form-control" name="ram" formControlName="ram" />
+                </mat-form-field>
+                <mat-form-field appearence="fill">
+                  <input matInput placeholder="Almacenamiento" class="form-control" name="storage"
+                    formControlName="storage" />
+                </mat-form-field>
+
+                <input type="submit" class="btn btn-outline-info" value="Añadir" />
               </div>
+
             </div>
           </form>
         </div>
 
-        <div
-          class="tab-pane fade show"
-          id="profile"
-          role="tabpanel"
-          aria-labelledby="profile-tab"
-        >
+        <div class="tab-pane fade show" id="modificar" role="tabpanel" aria-labelledby="modificar-tab">
           <h3 class="register-heading">Modificar celular</h3>
           <form id="celForm2" [formGroup]="celForm2" (ngSubmit)="modificar()">
             <div class="row register-form">
-              <mat-label> Selecciona modelo a modificar </mat-label>
-              <mat-select
-                class="form-control"
-                name="celModif"
-                formControlName="celModif"
-              >
-                <mat-option value="blah">Eins</mat-option>
-                <mat-option value="meh">Zwei</mat-option>
-                <mat-option value="figue huele feo">Drei</mat-option>
+              <mat-label> Selecciona modelo a modificar: </mat-label>
+              <mat-select class="form-control" name="celModif" formControlName="celModif" [value]="cellected.nombre">
+                <ng-container *ngFor="let cell of cellphone">
+                  <mat-option (click)="recuperar(cell)">{{cell.nombre}}</mat-option>
+                </ng-container>
+
+
               </mat-select>
               <div class="col-md-6">
-                  <br>
+                <h3 class=" badge badge-warning mt-3">{{cellected.nombre}}</h3>
+
                 <mat-form-field appearence="fill">
-                  <input
-                    matInput
-                    placeholder="Marca"
-                    class="form-control"
-                    name="marca"
-                    formControlName="marca"
-                  />
+                  <input matInput placeholder="Marca" class="form-control" name="marca" formControlName="marca"
+                    [value]="cellected.marca" />
                 </mat-form-field>
                 <mat-form-field appearence="fill">
-                  <input
-                    matInput
-                    placeholder="Nombre"
-                    class="form-control"
-                    name="nombre"
-                    formControlName="nombre"
-                  />
+                  <input matInput placeholder="Nombre" class="form-control" name="nombre" formControlName="nombre"
+                    [value]="cellected.nombre" />
                 </mat-form-field>
                 <mat-form-field appearence="fill">
-                  <input
-                    matInput
-                    placeholder="CPU"
-                    class="form-control"
-                    name="cpu"
-                    formControlName="cpu"
-                  />
+                  <input matInput placeholder="CPU" class="form-control" name="cpu" formControlName="cpu"
+                    [value]="cellected.cpu" />
+                </mat-form-field>
+                <mat-form-field appearence="fill">
+                  <input matInput placeholder="URL QR" class="form-control" name="qrURL" formControlName="qrURL"
+                    [value]="cellected.qrURL" />
+                </mat-form-field>
+                <mat-form-field appearence="fill">
+                  <input matInput placeholder="URL IMG" class="form-control" name="imgURL" formControlName="imgURL"
+                    [value]="cellected.imgURL" />
+                </mat-form-field>
+                <mat-form-field appearence="fill">
+                  <input matInput placeholder="Peso" class="form-control" name="weight" formControlName="weight"
+                    [value]="cellected.peso" />
+                </mat-form-field>
+                <mat-form-field appearence="fill">
+                  <input matInput placeholder="Batería" class="form-control" name="battery" formControlName="battery"
+                    [value]="cellected.bateria" />
+                </mat-form-field>
+                <mat-form-field appearence="fill">
+                  <input matInput placeholder="Cámara" class="form-control" name="camera" formControlName="camera"
+                    [value]="cellected.camara" />
                 </mat-form-field>
               </div>
 
               <div class="col-md-6">
-                  <br>
                 <div class="form-group">
                   <mat-form-field appearence="fill">
-                    <input
-                      matInput
-                      placeholder="OS"
-                      class="form-control"
-                      name="os"
-                      formControlName="os"
-                    />
+                    <input matInput placeholder="SO" class="form-control" name="os" formControlName="os"
+                      [value]="cellected.os" />
                   </mat-form-field>
-                </div>
-                <div class="form-group">
                   <mat-form-field appearence="fill">
-                    <input
-                      matInput
-                      placeholder="Resolución"
-                      class="form-control"
-                      name="resolucion"
-                      formControlName="resolucion"
-                    />
+                    <input matInput placeholder="Resolución" class="form-control" name="resolucion"
+                      formControlName="resolucion" [value]="cellected.resolucion" />
+                  </mat-form-field>
+                  <mat-form-field appearence="fill">
+                    <input matInput placeholder="Dimensiones" class="form-control" name="dimensions"
+                      formControlName="dimensions" [value]="cellected.dimensiones" />
+                  </mat-form-field>
+                  <mat-form-field appearence="fill">
+                    <input matInput placeholder="Pantalla" class="form-control" name="display" formControlName="display"
+                      [value]="cellected.pantalla" />
+                  </mat-form-field>
+                  <mat-form-field appearence="fill">
+                    <input matInput placeholder="PPP" class="form-control" name="ppi" formControlName="ppi"
+                      [value]="cellected.ppi" />
+                  </mat-form-field>
+                  <mat-form-field appearence="fill">
+                    <input matInput placeholder="Precio" class="form-control" name="price" formControlName="price"
+                      [value]="cellected.precio" />
+                  </mat-form-field>
+                  <mat-form-field appearence="fill">
+                    <input matInput placeholder="RAM" class="form-control" name="ram" formControlName="ram"
+                      [value]="cellected.ram" />
+                  </mat-form-field>
+                  <mat-form-field appearence="fill">
+                    <input matInput placeholder="Almacenamiento" class="form-control" name="storage"
+                      formControlName="storage" [value]="cellected.almacenamiento" />
                   </mat-form-field>
                 </div>
-                <input type="submit" class="btnRegister" value="Añadir" />
+                <input type="submit" class="btn btn-outline-warning" value="Modificar" />
               </div>
             </div>
           </form>
         </div>
+
+        <div class="tab-pane fade show" id="eliminar" role="tabpanel" aria-labelledby="eliminar-tab">
+          <h3 class="register-heading">Eliminar celular</h3>
+          <form id="celForm3" [formGroup]="celForm3" (ngSubmit)="eliminar()">
+            <div class="row register-form">
+              <mat-label> Selecciona modelo a eliminar: </mat-label>
+              <mat-select class="form-control" name="celModif" formControlName="celModif" [value]="cellected.nombre">
+                <ng-container *ngFor="let cell of cellphone">
+                  <mat-option (click)="recuperar(cell)">{{cell.nombre}}</mat-option>
+                </ng-container>
+
+
+              </mat-select>
+              <div class="col-md-6">
+                <h3 class=" badge badge-danger mt-3">{{cellected.nombre}}</h3>
+
+                <mat-form-field appearence="fill">
+                  <input matInput placeholder="Marca" class="form-control" name="marca" formControlName="marca"
+                    [value]="cellected.marca" />
+                </mat-form-field>
+                <mat-form-field appearence="fill">
+                  <input matInput placeholder="Nombre" class="form-control" name="nombre" formControlName="nombre"
+                    [value]="cellected.nombre" />
+                </mat-form-field>
+                <mat-form-field appearence="fill">
+                  <input matInput placeholder="CPU" class="form-control" name="cpu" formControlName="cpu"
+                    [value]="cellected.cpu" />
+                </mat-form-field>
+                <mat-form-field appearence="fill">
+                  <input matInput placeholder="URL QR" class="form-control" name="qrURL" formControlName="qrURL"
+                    [value]="cellected.qrURL" />
+                </mat-form-field>
+                <mat-form-field appearence="fill">
+                  <input matInput placeholder="URL IMG" class="form-control" name="imgURL" formControlName="imgURL"
+                    [value]="cellected.imgURL" />
+                </mat-form-field>
+                <mat-form-field appearence="fill">
+                  <input matInput placeholder="Peso" class="form-control" name="weight" formControlName="weight"
+                    [value]="cellected.peso" />
+                </mat-form-field>
+                <mat-form-field appearence="fill">
+                  <input matInput placeholder="Batería" class="form-control" name="battery" formControlName="battery"
+                    [value]="cellected.bateria" />
+                </mat-form-field>
+                <mat-form-field appearence="fill">
+                  <input matInput placeholder="Cámara" class="form-control" name="camera" formControlName="camera"
+                    [value]="cellected.camara" />
+                </mat-form-field>
+              </div>
+
+              <div class="col-md-6">
+                <div class="form-group">
+                  <mat-form-field appearence="fill">
+                    <input matInput placeholder="SO" class="form-control" name="os" formControlName="os"
+                      [value]="cellected.os" />
+                  </mat-form-field>
+                  <mat-form-field appearence="fill">
+                    <input matInput placeholder="Resolución" class="form-control" name="resolucion"
+                      formControlName="resolucion" [value]="cellected.resolucion" />
+                  </mat-form-field>
+                  <mat-form-field appearence="fill">
+                    <input matInput placeholder="Dimensiones" class="form-control" name="dimensions"
+                      formControlName="dimensions" [value]="cellected.dimensiones" />
+                  </mat-form-field>
+                  <mat-form-field appearence="fill">
+                    <input matInput placeholder="Pantalla" class="form-control" name="display" formControlName="display"
+                      [value]="cellected.pantalla" />
+                  </mat-form-field>
+                  <mat-form-field appearence="fill">
+                    <input matInput placeholder="PPP" class="form-control" name="ppi" formControlName="ppi"
+                      [value]="cellected.ppi" />
+                  </mat-form-field>
+                  <mat-form-field appearence="fill">
+                    <input matInput placeholder="Precio" class="form-control" name="price" formControlName="price"
+                      [value]="cellected.precio" />
+                  </mat-form-field>
+                  <mat-form-field appearence="fill">
+                    <input matInput placeholder="RAM" class="form-control" name="ram" formControlName="ram"
+                      [value]="cellected.ram" />
+                  </mat-form-field>
+                  <mat-form-field appearence="fill">
+                    <input matInput placeholder="Almacenamiento" class="form-control" name="storage"
+                      formControlName="storage" [value]="cellected.almacenamiento" />
+                  </mat-form-field>
+                </div>
+                <input type="submit" class="btn btn-outline-danger" value="Eliminar" />
+              </div>
+            </div>
+          </form>
+        </div>
+
       </div>
+
     </div>
   </div>
 </div>
