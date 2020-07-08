@@ -68,16 +68,11 @@
       <input
         class="form-control mr-sm-2"
         type="text"
+        #text
         placeholder="Search Equipment"
         aria-label="Search"
       />
-      <button
-        class="btn btn-success my-2 my-sm-0"
-        type="button"
-        (click)="enviar()"
-      >
-        Search
-      </button>
+      <a class="btn btn-success my-2 my-sm-0" (click)="enviar(text.value)" [href]="urlSearch" target="_blank">Search</a>
       <button type="button" mat-icon-button>
         <mat-icon>help</mat-icon>
       </button>

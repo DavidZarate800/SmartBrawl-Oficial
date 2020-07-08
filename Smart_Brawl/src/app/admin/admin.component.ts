@@ -36,8 +36,6 @@ export class AdminComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder, private nodejs: NodejsService) {
     // Form validation
-
-
     this.celForm1 = formBuilder.group({
       marca: ['', Validators.required],
       nombre: ['', Validators.required],
@@ -107,8 +105,7 @@ export class AdminComponent implements OnInit {
       swal('Error!', 'Verify required data...', 'error');
     }
     else {
-
-      console.log(this.celForm1.value);
+      //console.log(this.celForm1.value);
       this.nodejs.addPhone(this.celForm1.value).subscribe(() => {
         swal('Success!', 'New cellphone added', 'success');
       });
@@ -140,7 +137,7 @@ export class AdminComponent implements OnInit {
           id: e.payload.doc.id
         };
       });
-      console.log(this.cellphone);
+      //console.log(this.cellphone);
       this.bandera=false;
     });
   }
@@ -149,8 +146,8 @@ export class AdminComponent implements OnInit {
 
   recuperar(cell: any) {
     this.cellected = cell;
-    console.log('cell:', cell);
-    console.log('cellected', this.cellected);
+    //console.log('cell:', cell);
+    //console.log('cellected', this.cellected);
   }
 
 
@@ -193,7 +190,7 @@ export class AdminComponent implements OnInit {
         .then((change) => {
           if (change) {
             // Aqui se mandan los datos modificados a la BD
-            console.log(this.celForm2.value);
+            //console.log(this.celForm2.value);
             this.nodejs.setPhone(this.celForm2.value, this.cellected.id).subscribe(() => {
               swal('Success!', 'Cellphone modified', 'success');
             });

@@ -20,8 +20,7 @@ export class NodejsService {
 
   //angular crud
 
-  getAllPhones()
-  {
+  getAllPhones(){
     return this.fireservices.collection('Cellphones').snapshotChanges();
   }
 

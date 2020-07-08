@@ -17,6 +17,7 @@ import swal from '../../../node_modules/sweetalert';
 export class MainNavComponent {
   nomcorreo: string;
   mensaje: string;
+  urlSearch: string;
 
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
@@ -31,13 +32,12 @@ export class MainNavComponent {
     private authService: AuthService
   ) {  }
 
-  enviar(): void {
-    const urlapi = `http://localhost:5001/nodeapi-9b54e/us-central1/widgets/api`;
-     console.log(urlapi);
-    this.nodejs.getJson(urlapi).subscribe((data: any) => {
-      this.mensaje = data;
-      console.log(this.mensaje);
-    });
+  //Hacer busqueda en google
+  enviar(text: string): void {
+    if(text != ""){
+      this.urlSearch = `https://www.google.com/search?q=${text}`
+    }
+    
   }
 
 

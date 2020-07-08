@@ -56,21 +56,18 @@ export class ContactComponent implements OnInit {
 
   submit() {
     this.bandera = true;
-    /*this.calificacion = this.form.value['rate'];
-    this.tipo = this.form.value['reason'];
-    console.log(this.calificacion);
-    console.log(this.tipo);
-    */
    this.form.value['rate'] = this.form.value['rate']/10000;
+
     if (!this.form.valid) {
       swal('Error!', 'Verify required data...', 'error');
     }
     else {
-      console.log(this.form.value);
+      //console.log(this.form.value);
       this.messageService.sendMessage(this.form.value).subscribe(() => {
         this.bandera = false;
         swal('Message sent!', 'We will aswer you.', 'success');
       });
+      //Se envía la calificación a la BD Calificaciones
       this.messageService.sendCalif(this.form.value).subscribe(() => { });
     }
 

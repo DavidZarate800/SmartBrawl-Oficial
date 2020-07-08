@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NodejsService } from '../services/nodejs.service';
+import swal from '../../../node_modules/sweetalert';
 
 @Component({
   selector: 'app-loggedin',
@@ -13,10 +14,26 @@ export class LoggedinComponent implements OnInit {
   cel1: any;
   cel2: any;
   bandera: boolean;
-
+  band2: boolean;
   constructor(private nodejs: NodejsService) { }
 
   ngOnInit(): void {
+  }
+  
+  comparar(cell: any){
+    if(this.cont == 1){
+      this.cel2 = this.cel1;
+      this.cel1 = cell;
+      this.band2 = true;
+    }
+    if(this.cont == 0){
+      this.cel1 = cell;
+      this.cont++;
+    }
+    swal('Cellphone added to the queue!', 'Go to the bottom of the page', 'success');
+  }
+
+  desplegar(){
     this.bandera = true;
     this.nodejs.getAllPhones().subscribe(data => {
       this.cellphone = data.map(e => {
@@ -40,22 +57,8 @@ export class LoggedinComponent implements OnInit {
           id: e.payload.doc.id
         };
       });
-      console.log(this.cellphone);
       this.bandera=false;
     });
-  }
-  
-  comparar(cell: any){
-    if(this.cont == 1){
-      this.cel2 = this.cel1;
-      this.cel1 = cell;
-    }
-    if(this.cont == 0){
-      this.cel1 = cell;
-      this.cont++;
-    }
-    console.log(this.cel1);
-    console.log(this.cel2);
   }
 
 }
