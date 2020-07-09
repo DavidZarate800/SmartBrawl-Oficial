@@ -3,6 +3,9 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import swal from '../../../node_modules/sweetalert';
 import { NodejsService } from '../services/nodejs.service';
 
+import { ChartOptions, ChartType, ChartDataSets } from 'chart.js';
+import { Label } from 'ng2-charts';
+
 @Component({
   selector: 'app-admin',
   templateUrl: './admin.component.html',
@@ -33,6 +36,12 @@ export class AdminComponent implements OnInit {
     almacenamiento: '',
     id: ''
   };
+  
+  calif: any;
+  cont1= 0;
+  cont2= 0;
+  cont3= 0;
+  
 
   constructor(private formBuilder: FormBuilder, private nodejs: NodejsService) {
     // Form validation
@@ -98,6 +107,7 @@ export class AdminComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    
   }
 
   anadir() {
@@ -141,6 +151,39 @@ export class AdminComponent implements OnInit {
       this.bandera=false;
     });
   }
+
+
+
+
+  desplegarCalif(){
+ 
+    this.nodejs.getCalif().subscribe(data => {
+      this.calif = data.map(e => {
+        return {
+          rate: e.payload.doc.data()['Calificacion'],
+          reason: e.payload.doc.data()['Tipo']
+        };
+      });
+    });
+ 
+    let m = this.calif;
+ 
+    for (let i=0; i<Object.keys(m).length; i++){
+      if(this.calif[i].reason == 'Complaint'){
+        this.cont1++;
+      }
+      if(this.calif[i].reason == 'Recomendation'){
+        this.cont2++;
+      }
+      if(this.calif[i].reason == 'Congratulation'){
+        this.cont3++;
+      }
+    }
+    console.log("contadores: ",this.cont1,this.cont2,this.cont3);
+  }
+
+
+
 
 
 
@@ -200,4 +243,33 @@ export class AdminComponent implements OnInit {
         });
     }
   }
+
+  public barChartOptions: ChartOptions = {
+    responsive: true,
+    scales: { xAxes: [{}], yAxes: [{}] },
+    plugins: {
+      datalabels: {
+        anchor: 'end',
+        align: 'end',
+      }
+    }
+  };
+  public barChartLabels: Label[] = ['Recomendations', 'Complaints', 'Congratulations'];
+  public barChartType: ChartType = 'bar';
+  public barChartLegend = true;
+ 
+  public barChartData: ChartDataSets[] = [
+    { data: [6,5,11], label: 'Reason' }
+  ];
+
+  public chartClicked({ event, active }: { event: MouseEvent, active: {}[] }): void {
+    console.log(event, active);
+  }
+ 
+  public chartHovered({ event, active }: { event: MouseEvent, active: {}[] }): void {
+    console.log(event, active);
+  }
+
+
+
 }

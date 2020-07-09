@@ -203,35 +203,35 @@
 
                 <mat-form-field appearence="fill">
                   <input matInput placeholder="Marca" class="form-control" name="marca" formControlName="marca"
-                    [value]="cellected.marca" readonly/>
+                    [value]="cellected.marca" readonly />
                 </mat-form-field>
                 <mat-form-field appearence="fill">
                   <input matInput placeholder="Nombre" class="form-control" name="nombre" formControlName="nombre"
-                    [value]="cellected.nombre" readonly/>
+                    [value]="cellected.nombre" readonly />
                 </mat-form-field>
                 <mat-form-field appearence="fill">
                   <input matInput placeholder="CPU" class="form-control" name="cpu" formControlName="cpu"
-                    [value]="cellected.cpu" readonly/>
+                    [value]="cellected.cpu" readonly />
                 </mat-form-field>
                 <mat-form-field appearence="fill">
                   <input matInput placeholder="URL QR" class="form-control" name="qrURL" formControlName="qrURL"
-                    [value]="cellected.qrURL" readonly/>
+                    [value]="cellected.qrURL" readonly />
                 </mat-form-field>
                 <mat-form-field appearence="fill">
                   <input matInput placeholder="URL IMG" class="form-control" name="imgURL" formControlName="imgURL"
-                    [value]="cellected.imgURL" readonly/>
+                    [value]="cellected.imgURL" readonly />
                 </mat-form-field>
                 <mat-form-field appearence="fill">
                   <input matInput placeholder="Peso" class="form-control" name="weight" formControlName="weight"
-                    [value]="cellected.peso" readonly/>
+                    [value]="cellected.peso" readonly />
                 </mat-form-field>
                 <mat-form-field appearence="fill">
                   <input matInput placeholder="Batería" class="form-control" name="battery" formControlName="battery"
-                    [value]="cellected.bateria" readonly/>
+                    [value]="cellected.bateria" readonly />
                 </mat-form-field>
                 <mat-form-field appearence="fill">
                   <input matInput placeholder="Cámara" class="form-control" name="camera" formControlName="camera"
-                    [value]="cellected.camara" readonly/>
+                    [value]="cellected.camara" readonly />
                 </mat-form-field>
               </div>
 
@@ -239,35 +239,35 @@
                 <div class="form-group">
                   <mat-form-field appearence="fill">
                     <input matInput placeholder="SO" class="form-control" name="os" formControlName="os"
-                      [value]="cellected.os" readonly/>
+                      [value]="cellected.os" readonly />
                   </mat-form-field>
                   <mat-form-field appearence="fill">
                     <input matInput placeholder="Resolución" class="form-control" name="resolucion"
-                      formControlName="resolucion" [value]="cellected.resolucion" readonly/>
+                      formControlName="resolucion" [value]="cellected.resolucion" readonly />
                   </mat-form-field>
                   <mat-form-field appearence="fill">
                     <input matInput placeholder="Dimensiones" class="form-control" name="dimensions"
-                      formControlName="dimensions" [value]="cellected.dimensiones" readonly/>
+                      formControlName="dimensions" [value]="cellected.dimensiones" readonly />
                   </mat-form-field>
                   <mat-form-field appearence="fill">
                     <input matInput placeholder="Pantalla" class="form-control" name="display" formControlName="display"
-                      [value]="cellected.pantalla" readonly/>
+                      [value]="cellected.pantalla" readonly />
                   </mat-form-field>
                   <mat-form-field appearence="fill">
                     <input matInput placeholder="PPP" class="form-control" name="ppi" formControlName="ppi"
-                      [value]="cellected.ppi" readonly/>
+                      [value]="cellected.ppi" readonly />
                   </mat-form-field>
                   <mat-form-field appearence="fill">
                     <input matInput placeholder="Precio" class="form-control" name="price" formControlName="price"
-                      [value]="cellected.precio" readonly/>
+                      [value]="cellected.precio" readonly />
                   </mat-form-field>
                   <mat-form-field appearence="fill">
                     <input matInput placeholder="RAM" class="form-control" name="ram" formControlName="ram"
-                      [value]="cellected.ram" readonly/>
+                      [value]="cellected.ram" readonly />
                   </mat-form-field>
                   <mat-form-field appearence="fill">
                     <input matInput placeholder="Almacenamiento" class="form-control" name="storage"
-                      formControlName="storage" [value]="cellected.almacenamiento" readonly/>
+                      formControlName="storage" [value]="cellected.almacenamiento" readonly />
                   </mat-form-field>
                 </div>
                 <input type="submit" class="btn btn-outline-danger" value="Eliminar" />
@@ -278,4 +278,15 @@
       </div>
     </div>
   </div>
+</div>
+<!-- Grafica -->
+<hr>
+
+
+<div>
+  <br />
+  <br />
+  <canvas baseChart [datasets]="barChartData" [labels]="barChartLabels" [options]="barChartOptions"
+    [legend]="barChartLegend" [chartType]="barChartType">
+  </canvas>
 </div>

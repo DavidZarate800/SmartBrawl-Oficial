@@ -33,4 +33,9 @@ export class NodejsService {
     return this.httpClient.post(`https://us-central1-pruebaachida.cloudfunctions.net/apis/update/${id}`, body);
   }
 
+
+  getCalif(){
+    return this.fireservices.collection('Calificaciones').snapshotChanges();
+  }
+
 }

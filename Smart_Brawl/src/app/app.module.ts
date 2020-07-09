@@ -30,6 +30,8 @@ import { NodejsService } from "./services/nodejs.service";
 import { NgxQRCodeModule } from '@techiediaries/ngx-qrcode';
 import { LoadingComponent } from './loading/loading.component';
 
+import { ChartsModule } from 'ng2-charts';
+
 
 @NgModule({
   declarations: [
@@ -64,7 +66,8 @@ import { LoadingComponent } from './loading/loading.component';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     AngularFirestoreModule,
-    NgxQRCodeModule
+    NgxQRCodeModule,
+    ChartsModule
 
   ],
   providers: [MessageService, NodejsService],

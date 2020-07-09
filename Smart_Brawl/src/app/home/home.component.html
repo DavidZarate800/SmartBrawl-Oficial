@@ -1,5 +1,6 @@
 <mat-toolbar><span class="material-icons">home</span>&nbsp; Home</mat-toolbar><br />
 
+<!--Collage-->
 <mat-grid-list [cols]="colSize" rowHeight="200px" gutterSize="5px">
   <mat-grid-tile colspan="2" rowspan="2">
     <img src="../../assets/poco_f2.jpg" alt="" />
@@ -63,12 +64,14 @@
 <br />
 <br />
 <br />
+<!--Filter-->
 <mat-toolbar>Top 10 smartphones 2020!</mat-toolbar><br />
 <mat-form-field>
   <mat-label>Filter</mat-label>
   <input matInput (keyup)="applyFilter($event)" />
 </mat-form-field>
 
+<!--Tabla-->
 <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
   <ng-container matColumnDef="position">
     <th mat-header-cell *matHeaderCellDef>No.</th>
